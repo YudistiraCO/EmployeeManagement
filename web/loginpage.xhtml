@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>EMS</title>
+        <link href="image/style.css" rel="stylesheet" type="text/css" />
+        <style>
+            .account-page {
+    width: 100%;
+    height: 500px;
+    padding: 80px 50px;
+    margin: 38px 0;
+    box-sizing: border-box;
+    /* position: relative;
+    display: flex; */
+    height: 630px;
+    max-width: 1200px;
+    /* flex-wrap: wrap; */
+}
+
+.login-img {
+    margin-left: 10px;
+    float: right;
+    width: 50%;
+}
+
+.form-container {
+    background: #fff;
+    float: right;
+    width: 350px;
+    height: 430px;
+    position: relative;
+    text-align: center;
+    padding: 20px 15px;
+    /* margin: auto; */
+    margin-right: 3.5cm;
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.171);
+    overflow: hidden;
+}
+
+.form-container span {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px 10px 0;
+    color: #555;
+    cursor: pointer;
+    width: 100px;
+    display: inline-block;
+}
+
+.form-btn {
+    display: inline-block;
+}
+
+.form-container form {
+    max-width: 300px;
+    padding: 0 30px;
+    position: absolute;
+    top: 120px;
+    transition: transform 1s;
+}
+
+form input {
+    width: 100%;
+    height: 50px;
+    margin: 10px 30px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+}
+
+#LoginForm {
+    left: -300px;
+}
+
+#RegForm {
+    left: 0;
+}
+
+form a {
+    font-size: 12px;
+}
+
+#Indicator {
+    width: 52%;
+    border: none;
+    background: rgba(0, 0, 0, 0.589);
+    height: 3px;
+    margin-top: 8px;
+    transform: translateX(100px);
+    transition: transform 1s;
+}
+
+a.btn-join1 {
+    background: rgba(0, 0, 0, 0.589);
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-left: 35px;
+    padding: 13px 60px 13px 60px;
+    color: rgba(255, 255, 255, 0.842);
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 5px 3px 15px rgba(0, 0, 0, 0.5);
+}
+
+        
+         nav {
+            background: rgba(0, 0, 0, 0.746);
+            height: 45px;
+            position: absolute;
+            top: 0;
+            z-index: 1;
+            width: 100%;
+        }
+        
+        label.logo {
+            margin-left: 100px;
+            color: rgba(255, 255, 255, 0.842);
+            font-size: 25px;
+            line-height: 40px;
+            /* padding: 0 100px; */
+            font-weight: bold;
+        }
+        
+        nav ul {
+            float: right;
+            margin-right: 1cm;
+        }
+        
+        nav ul li {
+            display: inline-block;
+            line-height: 25px;
+            margin: 0 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            font-weight: 300;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.842);
+        }
+        
+        nav ul li a:hover {
+            color: rgb(255, 255, 255);
+            transition: 1s;
+        }
+      
+        .grid-radio td {
+            padding: .5rem;
+        }
+        
+
+        </style>
+    </h:head>
+    <h:body>
+         <nav>
+              <label class="logo">Employee Management System</label>
+              <ul>     
+                <li><a href="index.xhtml">Login</a></li>
+               </ul>
+            </nav>
+        
+    <div class="account-page">
+        <div class="container-page">
+            <div class="row">
+                <div class="col-2">
+                    <img class="login-img" src="image/undraw_Mobile_login_re_9ntv.svg"></img>
+                </div>
+                <div class="col-2">
+                    <div class="form-container">
+                        <div class="form-btn">
+                            <span onclick="login()">Login</span>
+                            <span onclick="register()">Register</span>
+                            <hr id="Indicator"></hr>
+                        </div>
+                        <form id="LoginForm">
+                            <p:inputText style="margin-left: 20px" type="text" placeholder="Username" value="#{tblHrd.username}"/>
+                            <p:inputText style="margin-left: 20px" type="password" placeholder="Password" value="#{tblHrd.password}"/>
+                            <p class="btn-now1"><a href="sukses.xhtml" class="btn-join1">Log In</a></p>
+                            <!-- <button type="submit" class="btn-log">Login</button> -->
+                            <a href="" style="margin-left: 45px ;">Forgot the password?</a>
+                        </form>
+
+                        <form id="RegForm">
+                            <p:inputText type="text" placeholder="Username"></p:inputText>
+                            <p:inputText type="email" placeholder="Email"></p:inputText>
+                            <p:inputText type="password" placeholder="Password"></p:inputText>
+                            <p:inputText type="text" placeholder="Address"></p:inputText>
+                            <p class="btn-now1"><a href="sukses.xhtml" class="btn-join1">Sign Up</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var LoginForm = document.getElementById("LoginForm")
+        var RegForm = document.getElementById("RegForm")
+        var Indicator = document.getElementById("Indicator")
+
+        function login() {
+            LoginForm.style.transform = "translateX(300px)"
+            RegForm.style.transform = "translateX(300px)"
+            Indicator.style.transform = "translateX(0px)"
+
+        }
+
+        function register() {
+            LoginForm.style.transform = "translateX(0px)"
+            RegForm.style.transform = "translateX(0px)"
+            Indicator.style.transform = "translateX(100px)"
+        }
+    </script>
+    </h:body>
+</html>
+
